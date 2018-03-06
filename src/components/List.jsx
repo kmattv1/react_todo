@@ -20,8 +20,24 @@ export default class List extends Component {
         location.reload();
     }
 
+    buildItem(item){
+        if (item === null) {
+            return '';
+        } else {
+            return (
+                <ListItem 
+                        value={item.value} 
+                        status={item.status} 
+                        enabled={item.enabled}
+                        id={item.id}
+                        update={this.update}>
+                </ListItem>
+            );
+        }
+    }
+
     render() {
-        if (this.status.list == null){
+        if (this.status.list == null || this.status.list.length == 0){
             return (
                 <BpkList>
                     <AddItem value='Add new task' update={this.update}/>
@@ -32,14 +48,7 @@ export default class List extends Component {
         return (
         <BpkList>
             <BpkGridContainer>
-                {list.map(item => (
-                    <ListItem 
-                        value={item.value} 
-                        status={item.status} 
-                        enabled={item.enabled}
-                        id={item.id}
-                        update={this.update}>
-                    </ListItem>))}
+                {list.map(item => (this.buildItem(item)))}
             </BpkGridContainer>
             <AddItem value='Add new task' update={this.update}/>
         </BpkList>

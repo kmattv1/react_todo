@@ -16,21 +16,21 @@ export function addItem(item){
 }
 
 export function changeStoredList(item, task){
-    console.log(item);
-    if (item.value !== ''){
-            if (typeof(localStorage.list) != 'undefined'){
+    if (item != null && item.value !== ''){
+            if (typeof(localStorage.list) !== 'undefined' &&
+            typeof(item.id) !== 'undefined'){
                 const list = JSON.parse(localStorage.list);
                 var newList = [];
 
                 for (let i =0; i < list.length; i+=1){
-                    if (typeof(item.id) != 'undefined' && 
-                        typeof(list[i].id) != 'undefined' &&
-                        list[i].id == item.id){
-                        if (task == 'update'){
-                            newList[i] = item;
+                    if (typeof(item.id) !== 'undefined' && 
+                        typeof(list[i].id) !== 'undefined' &&
+                        list[i].id === item.id){
+                        if (task === 'update'){
+                            newList.push(item);
                         }
                     } else {
-                        newList[i] = list[i];
+                        newList.push(list[i]);
                     }
                 }
 
@@ -42,7 +42,7 @@ export function changeStoredList(item, task){
 }
 
 export function getNextId(){
-    return (typeof(localStorage.list) != 'undefined') ? JSON.parse(localStorage.list).length : 0 ; 
+    return (typeof(localStorage.list) !== 'undefined') ? JSON.parse(localStorage.list).length : 0 ; 
 }
 
 export function updateItem(item){
