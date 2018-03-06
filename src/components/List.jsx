@@ -21,7 +21,14 @@ export default class List extends Component {
     }
 
     render() {
-        const list = this.status.list != null ? this.status.list : [] ;
+        if (this.status.list == null){
+            return (
+                <BpkList>
+                    <AddItem value='Add new task' update={this.update}/>
+                </BpkList>
+            );
+        }
+        const list = this.status.list;
         return (
         <BpkList>
             <BpkGridContainer>

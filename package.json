@@ -2,6 +2,7 @@
   "name": "my-todo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kmattv1.github.io/react_todo/",
   "dependencies": {
     "backpack-react-scripts": "5.0.6",
     "gh-pages": "^1.1.0",
