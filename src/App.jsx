@@ -1,18 +1,12 @@
 import React from 'react';
-import { BpkCode } from 'bpk-component-code';
-import BpkButton from 'bpk-component-button';
 import BpkText from 'bpk-component-text';
 import { BpkGridContainer, BpkGridRow, BpkGridColumn } from 'bpk-component-grid';
-import List from './components/List.jsx';
+import List from './components/List';
 
 
 import STYLES from './App.scss';
 
 const c = className => STYLES[className] || 'UNKNOWN';
-
-if (typeof (window) !== 'undefined') {
-  document.addEventListener('listChange', this.forceUpdate, false);
-}
 
 const App = () => (
   <div className={c('App')}>
@@ -29,7 +23,7 @@ const App = () => (
       <BpkGridContainer>
         <BpkGridRow>
           <BpkGridColumn width={12}>
-                <List/>
+            <List />
           </BpkGridColumn>
         </BpkGridRow>
       </BpkGridContainer>
